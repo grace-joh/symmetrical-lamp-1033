@@ -6,3 +6,13 @@
     <p>Bought at: <%= item.supermarket_name %></p>
   </div>
 <% end %>
+<br>
+
+<div id="add-item">
+  <h4>Add Item</h4>
+  <%= form_with url: "/customers/#{@customer.id}/items", method: :post, local: true do |f| %>
+    <%= f.number_field :item_id, placeholder: "Item ID" %>
+    <br>
+    <%= f.submit "Add Item to #{@customer.name}'s List" %>
+  <% end %>
+</div>

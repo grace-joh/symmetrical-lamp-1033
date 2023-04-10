@@ -4,7 +4,7 @@ RSpec.describe 'the Customer show page' do
   before(:each) do
     test_data
 
-    visit "customers/#{@customer1.id}"
+    visit "/customers/#{@customer1.id}"
   end
 
   describe 'User Story 1' do

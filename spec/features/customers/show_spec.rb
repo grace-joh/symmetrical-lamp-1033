@@ -24,4 +24,26 @@ RSpec.describe 'the Customer show page' do
       end
     end
   end
+
+  describe 'User Story 2' do
+    it 'has a form to add an item to the customers list' do
+      within('div#add-item') do
+        expect(page).to have_content('Add Item')
+        expect(page).to have_field('Item ID')
+        expect(page).to have_button("Add Item to #{@customer1.name}'s List")
+      end
+    end
+
+    it 'can add an item to the list' do
+      expect(page).to_not have_content(@item2.name)
+
+      within('div#add-item') do
+        fill_in('Item ID', with: @item2.id)
+        click_on("Add Item to #{@customer1.name}'s List")
+      end
+
+      expect(current_path).to eq("/customers/#{@customer1.id}")
+      expect(page).to have_content(@item2.name)
+    end
+  end
 end

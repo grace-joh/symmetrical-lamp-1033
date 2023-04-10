@@ -18,5 +18,12 @@ RSpec.describe Item, type: :model do
         expect(@item7.supermarket_name).to eq('Kroger')
       end
     end
+
+    describe '#customer_purchase_count' do
+      it 'counts the number of distinct customers who purchased it' do
+        expect(@item1.customer_purchase_count).to eq(1)
+        expect(@item7.customer_purchase_count).to eq(2)
+      end
+    end
   end
 end
